@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <style media="screen">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 100%;
+      /* 1rem = 1em = 16px */
+    }
+
+    body {
+      line-height: 120%;
+      /* deco */
+      background-color: #f0f0f0;
+      color: #333;
+      font-weight: 100;
+      font-size: 10rem;
+      min-height: 100vh;
+    }
+
+    section {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+</head>
+
+<body>
+  <section></section>
+  <article></article>
+</body>
+<script>
+  /*
+  code épuré
+  vérifie isNaN and <128 (il manque parfois un Enter, donc les valeurs sont trop grandes)
+  le µc fait le lissage et n'envoie la valeur que si différente des deux dernières évite flicking entre 2 valeurs entières
+  */
+  table = [];
+  let potValue;
+  const sac = document.querySelector("section");
+  pointeur.style.display = "none";
+  // pour eviter les fluctuations, memorise les 2 dernières valeurs recues et compare ensuite
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key !== undefined) {
+      //console.log("reçu: ",event.code);
+      switch (event.code) {
+        case 'Enter':
+          // transform string to number
+          temp = parseInt(table.join(""));
+          if (!Number.isNaN(temp)) { // si c'est un chiffre
+            if (temp<128) { // évite les tables avec 4 valeurs ou 3 mais dont le join est > à une valeur acceptable
+              // si changement ne ressemble pas à la valeur antérieure (la position est entre 2 valeurs)
+              potValue = temp;
+              // write in body
+              sac.innerHTML = potValue;
+              // reinit array
+              table = [];
+              console.log(potValue);
+            } else {
+              table = [];
+            }
+          }
+          break;
+        default:
+          // remove "Digit" in the string and push in the array
+          table.push(event.code.replace(/Digit/gm, ""));
+      }
+    }
+  });
+</script>
+</html>
