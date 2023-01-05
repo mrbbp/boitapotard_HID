@@ -1,8 +1,11 @@
 # boitapotard_HID
 
-microcontroller potentiometer value to html through USB HID  
-transfert des valeurs d'un potentiomètre connecté en A1 via USB-HID (message clavier)
+_microcontroller potentiometer value to html through USB HID__  
 
+---
+Transfert des valeurs d'un potentiomètre connecté en A1 via USB-HID (message clavier)
+
+---  
 Permet de connecter un µc à une tablette et smartphone et de transférer la valeur du potard à la page web.
 
 Le µc ne renvoie la valeur que si elle est différente des 2 dernières (évite le flicking entre 2 valeurs)  
