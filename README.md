@@ -7,17 +7,17 @@ Permet de connecter un µc à une tablette et smartphone et de transférer la va
 
 Le µc ne renvoie la valeur que si elle est différente des 2 dernières (évite le flicking entre 2 valeurs)  
 le µc envoie la valeur du potard (_int_ entre 0-127)  
+
 exemple :  
 valeur du potard = 127  
-message reçu = "Digit1Digit2Digit7Enter"
+message reçu = "Digit1" + "Digit2" + "Digit7" + "Enter"  
 
 
-La page HTML gère les erreurs :
-- chiffre > à 127 (manque un 'Enter' entre 2 envoies)
+La page HTML  :  
+- gère les erreurs : chiffre > à 127 (manque un 'Enter' entre 2 envois)
+- envoie les 'chiffres' dans un array
+- fabrique une chaine avec le contenu de l'array et la transtype en nombre (reconstitue le nombre envoyé) quand reçoit 'Enter', 
 
-Récupère le chiffre et l'envoie dans un array
-quand reçoit 'Enter', fabrique une chaine avec le contenu de l'array et la transtype en nombre (reconstitue le nombre envoyé)
-
-Testé sur :
-iPadOs (16.2) : Firefox, Chrome, Safari Mobile
+Testé sur :  
+iPadOs (16.2) : Firefox, Chrome, Safari Mobile  
 Android (9) : Firefox, Chrome
